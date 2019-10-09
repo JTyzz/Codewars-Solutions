@@ -32,3 +32,27 @@ Iterate over array, checking at each index if the int is in a set. If no, add it
  		}
  		return pair_count
     }
+
+/*Most frequent integer in an array
+Find the most frequent integer in an array.
+
+Solution:
+Iterate through array, adding each value to a hash table and assigning it a count value.
+*/
+public static Integer mostFreqent(int[] givenArray) {
+    Integer maxCount = -1; Integer maxItem = null;
+    HashMap<Integer, Integer> count = new HashMap<Integer, Integer>();
+    for (int i : givenArray) {
+        if (count.containsKey(i)) {
+            Integer newVal = count.get(i) + 1;
+            count.put(i, newVal);
+        } else {
+            count.put(i, 1);
+        }
+        if (count.get(i) > maxCount) {
+            maxCount = count.get(i);
+            maxItem = i;
+            }
+        }
+    return maxItem;
+}
